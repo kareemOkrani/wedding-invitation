@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f6f1e6">
+<title>Moaz & Nada | Wedding Invitation</title>
+<meta property="og:title" content="Moaz & Nada | Wedding Invitation">
+<meta property="og:description" content="Cordially invites you • Tuesday 27 October 2026 • 8:00 PM • Le Palace Wedding">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&display=swap');
+
+:root{
+  --sage:#5f6e54;
+  --sage-dark:#44503c;
+  --sage-deep:#2e3629;
+  --cream:#f7f2e6;
+  --cream-2:#faf6ec;
+  --gold:#a98f5c;
+  --gold-light:#cdbb8d;
+  --ink:#4a4f43;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;width:100%;height:100%}
+body{
+  background:var(--sage-deep);
+  color:var(--ink);
+  font-family:"Cormorant Garamond",Georgia,serif;
+  display:flex;justify-content:center;
+  min-height:100svh;
+}
+.page{
+  width:min(100vw,480px);
+  height:100svh;
+  height:100dvh;
+  position:relative;
+  overflow:hidden;
+  background:var(--cream-2);
+  box-shadow:0 0 60px rgba(0,0,0,.45);
+  isolation:isolate;
+}
+.main-bg{
+  position:absolute;inset:0;z-index:0;
+  background:url('assets/main.jpg') center/100% 100% no-repeat;
+}
+.screen{
+  position:absolute;inset:0;width:100%;height:100%;
+  opacity:0;visibility:hidden;
+  transition:opacity .7s ease,visibility .7s;
+  z-index:1;
+}
+.screen.active{opacity:1;visibility:visible;z-index:10}
+
+/* ============ COVER ============ */
+#cover{background:transparent}
+#cover::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 38%,rgba(255,252,244,0) 55%,rgba(122,110,75,.14) 100%);
+  pointer-events:none;
+}
+.cover-inner{
+  position:relative;z-index:3;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:16% 13% 14%;
+}
+.eyebrow{
+  font-size:12px;letter-spacing:4px;color:var(--sage);
+  font-weight:600;margin:0 0 10px;
+}
+.eyebrow.small{font-size:11px;letter-spacing:3.5px;margin:0}
+.cover-names{
+  font-family:"Great Vibes",cursive;
+  font-size:clamp(52px,17vw,84px);
+  line-height:1.05;color:var(--sage);
+  margin:6px 0 2px;
+  text-shadow:0 1px 0 rgba(255,255,255,.7),0 10px 30px rgba(95,110,84,.18);
+  animation:fadeUp 1.1s ease both .15s;
+}
+.cover-names .amp{
+  font-size:.72em;padding:0 .08em;
+  color:var(--sage-dark);
+}
+.orn{display:flex;align-items:center;gap:10px;justify-content:center;margin:12px auto;animation:fadeUp 1.1s ease both .3s}
+.orn::before,.orn::after{content:"";height:1px;width:72px;background:linear-gradient(90deg,transparent,var(--gold));display:block}
+.orn::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.orn i{color:var(--gold);font-style:normal;font-size:13px}
+.cover-date{
+  font-size:clamp(18px,5vw,23px);letter-spacing:2px;
+  color:var(--sage-dark);font-weight:600;
+  animation:fadeUp 1.1s ease both .42s;
+}
+.cover-date small{display:block;font-size:12px;letter-spacing:4px;font-weight:500;margin-top:6px;color:var(--sage)}
+.cover-invite{
+  margin-top:16px;font-size:13px;letter-spacing:3.5px;
+  color:var(--sage);font-weight:500;
+  animation:fadeUp 1.1s ease both .55s;
+}
+.open-btn{
+  margin-top:30px;position:relative;overflow:hidden;
+  appearance:none;cursor:pointer;border:1px solid var(--gold);
+  background:linear-gradient(180deg,#6d7c5f,#525f47);
+  color:#fdf9ef;
+  font-family:"Cormorant Garamond",serif;
+  font-size:17px;letter-spacing:5px;text-transform:uppercase;font-weight:600;
+  padding:15px 62px 15px 67px;border-radius:999px;
+  box-shadow:0 14px 30px rgba(68,80,60,.35),inset 0 1px 0 rgba(255,255,255,.35);
+  transition:transform .2s ease,box-shadow .2s ease;
+  animation:fadeUp 1.1s ease both .68s,glow 2.6s ease-in-out infinite 1.8s;
+}
+.open-btn:active{transform:scale(.96)}
+.open-btn::after{
+  content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-20deg);animation:sheen 3.2s ease-in-out infinite;
+}
+@keyframes sheen{0%,55%{left:-70%}100%{left:130%}}
+@keyframes glow{0%,100%{box-shadow:0 14px 30px rgba(68,80,60,.35),0 0 0 0 rgba(169,143,92,.45)}50%{box-shadow:0 14px 30px rgba(68,80,60,.35),0 0 0 9px rgba(169,143,92,0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* floating gold dust on cover */
+.dust{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.dust span{position:absolute;width:5px;height:5px;border-radius:50%;background:radial-gradient(circle,#e9d9a8,rgba(233,217,168,0));opacity:.8;animation:float 7s linear infinite}
+@keyframes float{0%{transform:translateY(20px);opacity:0}15%{opacity:.9}100%{transform:translateY(-110px);opacity:0}}
+
+/* ============ INNER ============ */
+#invitation{background:transparent}
+.bg-top,.bg-bottom{position:absolute;left:0;width:100%;z-index:2;pointer-events:none;opacity:0}
+.bg-top{top:-1px;transform:translateY(-105%)}
+.bg-top img{width:104%;max-width:none;display:block;margin-left:-2%}
+.bg-bottom{bottom:-2px;transform:translateY(105%);transform-origin:20% 100%}
+.bg-bottom img{width:100%;display:block}
+#invitation.active .bg-top{animation:fromTop 1.4s cubic-bezier(.2,.8,.25,1) forwards}
+#invitation.active .bg-bottom{animation:fromBottom 1.4s cubic-bezier(.2,.8,.25,1) forwards .15s,bloom 8s ease-in-out infinite 1.7s}
+@keyframes fromTop{from{opacity:0;transform:translateY(-105%)}to{opacity:1;transform:translateY(0)}}
+@keyframes fromBottom{from{opacity:0;transform:translateY(105%)}to{opacity:1;transform:translateY(0)}}
+@keyframes bloom{0%,100%{transform:scale(1)}50%{transform:scale(1.012)}}
+
+.inner{
+  position:relative;z-index:5;height:100%;
+  overflow-y:auto;overflow-x:hidden;
+  padding:31% 9% 26%;
+  text-align:center;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.inner::-webkit-scrollbar{display:none}
+.scroll-hint{
+  position:absolute;z-index:15;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:3px;color:var(--sage);
+  background:rgba(250,246,236,.8);border:1px solid rgba(169,143,92,.45);
+  padding:7px 14px;border-radius:999px;transition:opacity .5s;
+}
+.scroll-hint.gone{opacity:0;pointer-events:none}
+
+h2,h3,p{margin:0}
+.kicker{font-size:12px;letter-spacing:4px;color:var(--sage);font-weight:600}
+.title{
+  font-size:22px;letter-spacing:2.5px;color:var(--sage-dark);
+  font-weight:600;line-height:1.3;margin-top:8px;
+}
+.sub{font-size:14px;letter-spacing:2px;color:var(--sage);margin-top:10px;line-height:1.7}
+.names{
+  font-family:"Great Vibes",cursive;color:var(--sage);
+  font-size:clamp(46px,13.5vw,62px);line-height:1.1;margin:8px 0 0;
+}
+.role{font-size:12px;letter-spacing:6px;color:var(--sage);margin:8px 0 2px;font-weight:600}
+.amp-big{font-family:"Great Vibes",cursive;font-size:44px;color:var(--sage-dark);margin:4px 0;line-height:1}
+.divider{display:flex;align-items:center;gap:10px;justify-content:center;margin:18px auto;max-width:260px}
+.divider::before,.divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.divider i{font-style:normal;color:var(--sage);font-size:12px}
+.section{padding:34px 0 6px}
+.time-big{font-size:44px;color:var(--sage-dark);font-weight:500;letter-spacing:1px;margin:14px 0 6px}
+.date-row{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--sage-dark);font-size:15px;letter-spacing:2.5px;font-weight:600}
+.date-row .num{font-size:46px;color:var(--sage);font-weight:500;line-height:1}
+.date-row .sep{color:var(--gold);font-size:22px;font-weight:400}
+.year{font-size:15px;letter-spacing:6px;color:var(--sage);margin-top:6px;font-weight:600}
+
+.count-title{margin-top:26px;font-size:16px;letter-spacing:4px;color:var(--sage-dark);font-weight:600}
+.timer{display:flex;justify-content:center;gap:9px;margin:14px auto 0;max-width:340px}
+.timer .cell{
+  flex:1;background:rgba(255,253,247,.72);
+  border:1px solid rgba(169,143,92,.55);border-radius:14px;
+  padding:11px 4px 9px;
+  box-shadow:0 8px 20px rgba(95,110,84,.12),inset 0 0 0 3px rgba(255,255,255,.5);
+  backdrop-filter:blur(2px);
+}
+.timer b{display:block;font-size:24px;color:var(--sage-dark);font-weight:600;font-variant-numeric:tabular-nums}
+.timer small{font-size:10px;letter-spacing:2px;color:var(--sage);font-weight:600}
+
+.calendar{
+  margin:24px auto 0;max-width:360px;
+  background:rgba(255,253,247,.78);
+  border:1px solid rgba(169,143,92,.65);border-radius:16px;
+  padding:18px 14px 16px;position:relative;
+  box-shadow:0 10px 26px rgba(95,110,84,.12);
+}
+.calendar::before{content:"";position:absolute;inset:5px;border:1px solid rgba(169,143,92,.3);border-radius:12px;pointer-events:none}
+.cal-title{font-size:20px;color:var(--sage-dark);font-weight:600;letter-spacing:1px;margin-bottom:12px}
+.week,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.week div{font-size:11px;color:#8a937f;letter-spacing:1px;font-weight:600}
+.days div{min-height:34px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#5c6355}
+.days .empty{background:none}
+.days .sel{position:relative;color:#fff;font-weight:600}
+.days .sel::before{
+  content:"";position:absolute;width:32px;height:32px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#75855f,var(--sage-dark));
+  box-shadow:0 0 0 2px var(--cream-2),0 0 0 3.5px var(--gold),0 6px 14px rgba(68,80,60,.35);
+  animation:pulse 2.4s infinite;
+}
+.days .sel span{position:relative;z-index:1}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+.venue-name{font-size:26px;color:var(--sage-dark);font-weight:600;letter-spacing:1px;margin:10px 0 16px}
+
+/* styled mini map — arched, part of the design */
+.map-frame{
+  max-width:330px;margin:0 auto;position:relative;
+  border:1px solid var(--gold);border-radius:160px 160px 20px 20px;
+  padding:9px;background:rgba(255,253,247,.6);
+  box-shadow:0 16px 34px rgba(95,110,84,.18);
+}
+.map-arch{
+  position:relative;overflow:hidden;border-radius:152px 152px 14px 14px;
+  border:1px solid rgba(169,143,92,.5);
+  height:290px;background:#ece7d6;
+}
+.map-arch iframe{
+  position:absolute;inset:-12% -18% -22% -18%;width:136%;height:134%;border:0;
+  filter:sepia(.38) saturate(.72) hue-rotate(18deg) brightness(1.03) contrast(.96);
+  pointer-events:none;
+}
+.map-arch::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90% 62% at 50% 42%,transparent 55%,rgba(95,110,84,.22) 100%),
+             linear-gradient(180deg,rgba(250,246,236,.25),transparent 30%,transparent 70%,rgba(250,246,236,.45));
+  border-radius:inherit;
+}
+.map-pin{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;
+}
+.map-pin .dot{
+  position:relative;
+  width:56px;height:56px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#7d8c68,var(--sage-dark));
+  border:3px solid #fdf9ef;outline:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:24px;
+  box-shadow:0 10px 22px rgba(46,54,41,.4);
+}
+.map-pin .ring{position:absolute;top:0;left:50%;width:56px;height:56px;transform:translateX(-50%);border-radius:50%;border:2px solid rgba(169,143,92,.7);animation:ring 2.2s ease-out infinite}
+@keyframes ring{from{transform:translateX(-50%) scale(1);opacity:.9}to{transform:translateX(-50%) scale(1.9);opacity:0}}
+.map-cap{
+  margin-top:12px;background:rgba(253,249,239,.95);color:var(--sage-dark);
+  border:1px solid var(--gold);
+  font-size:11px;font-weight:600;letter-spacing:2.5px;padding:8px 16px;border-radius:999px;white-space:nowrap;
+  box-shadow:0 8px 18px rgba(46,54,41,.25);
+}
+.map-btn{
+  display:inline-block;margin-top:18px;text-decoration:none;
+  color:#fdf9ef;background:linear-gradient(180deg,#6d7c5f,#525f47);
+  border:1px solid var(--gold);border-radius:999px;
+  font-size:15px;letter-spacing:2.5px;font-weight:600;
+  padding:13px 30px;box-shadow:0 12px 26px rgba(68,80,60,.3);
+  transition:transform .2s;
+}
+.map-btn:active{transform:scale(.96)}
+
+.footer{padding:44px 6px 30px;text-align:center}
+.footer .names{font-size:40px}
+.footer p{font-size:15px;letter-spacing:2px;color:var(--sage-dark);margin-top:12px;line-height:1.8}
+.footer .date-line{font-size:14px;letter-spacing:3px;color:var(--sage);margin-top:14px;font-weight:600}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:360px){
+  .inner{padding-left:7%;padding-right:7%}
+  .timer b{font-size:21px}
+  .cover-names{font-size:56px}
+}
+@media(min-width:520px){
+  .inner{padding-top:30%}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="main-bg"></div>
+
+  <!-- ================= COVER ================= -->
+  <section class="screen active" id="cover">
+    <div class="dust" id="dust"></div>
+    <div class="cover-inner">
+      <p class="eyebrow">THE WEDDING OF</p>
+      <h1 class="cover-names">Moaz <span class="amp">&</span> Nada</h1>
+      <div class="orn"><i>❦</i></div>
+      <div class="cover-date">
+        Tuesday &nbsp;•&nbsp; 27 . 10 . 2026
+        <small>AT 8:00 PM</small>
+      </div>
+      <p class="cover-invite">CORDIALLY INVITES YOU</p>
+      <button class="open-btn" onclick="openInvitation()">Open</button>
+    </div>
+  </section>
+
+  <!-- ================= INVITATION ================= -->
+  <section class="screen" id="invitation">
+    <div class="bg-top"><img src="assets/top.png" alt=""></div>
+    <div class="bg-bottom"><img src="assets/down.png" alt=""></div>
+
+    <div class="inner" id="scroller">
+      <div class="reveal">
+        <p class="kicker">WE JOYFULLY ANNOUNCE</p>
+        <h2 class="title">THE WEDDING OF</h2>
+        <div class="divider"><i>♥</i></div>
+        <div class="names">Moaz</div>
+        <div class="amp-big">&</div>
+        <div class="names">Nada</div>
+        <p class="sub">TWO HEARTS &nbsp;•&nbsp; ONE JOURNEY</p>
+        <div class="divider"><i>♥</i></div>
+      </div>
+
+      <div class="section reveal">
+        <p class="kicker">RECEPTION INFO</p>
+        <p class="sub">THE RECEPTION WILL TAKE PLACE AT :</p>
+        <div class="time-big">8:00 PM</div>
+        <div class="date-row">
+          <span>TUESDAY</span><span class="sep">|</span>
+          <span class="num">27</span><span class="sep">|</span>
+          <span>OCTOBER</span>
+        </div>
+        <div class="year">2026</div>
+
+        <div class="count-title">COUNTDOWN</div>
+        <div class="timer">
+          <div class="cell"><b id="dd">--</b><small>DAYS</small></div>
+          <div class="cell"><b id="hh">--</b><small>HOURS</small></div>
+          <div class="cell"><b id="mm">--</b><small>MIN</small></div>
+          <div class="cell"><b id="ss">--</b><small>SEC</small></div>
+        </div>
+
+        <div class="calendar">
+          <div class="cal-title">October 2026</div>
+          <div class="week"><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div><div>Su</div></div>
+          <div class="days" id="calDays"></div>
+        </div>
+      </div>
+
+      <div class="section reveal">
+        <p class="kicker">WEDDING RECEPTION VENUE</p>
+        <div class="venue-name">Le Palace Wedding</div>
+        <div class="map-frame">
+          <div class="map-arch">
+            <iframe title="Venue map" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=31.4706%2C30.5906%2C31.5106%2C30.6106&amp;layer=mapnik"></iframe>
+            <div class="map-pin">
+              <div class="ring"></div>
+              <div class="dot">♥</div>
+              <div class="map-cap">LE PALACE WEDDING</div>
+            </div>
+          </div>
+        </div>
+        <a class="map-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/VP7xsxKcNxmTzYbQ8">Open in Maps ↗</a>
+      </div>
+
+      <div class="footer reveal">
+        <div class="names">Moaz & Nada</div>
+        <p>We can't wait to celebrate with you</p>
+        <div class="divider"><i>♥</i></div>
+        <p class="date-line">27 • 10 • 2026</p>
+      </div>
+    </div>
+    <div class="scroll-hint" id="hint">SCROLL ↓</div>
+  </section>
+</div>
+
+<script>
+function openInvitation(){
+  document.getElementById('cover').classList.remove('active');
+  document.getElementById('invitation').classList.add('active');
+  var s=document.getElementById('scroller'); s.scrollTop=0;
+  requestAnimationFrame(observe);
+}
+
+/* gold dust */
+(function(){
+  var d=document.getElementById('dust');
+  for(var i=0;i<14;i++){
+    var s=document.createElement('span');
+    s.style.left=(Math.random()*100)+'%';
+    s.style.bottom='-10px';
+    s.style.animationDelay=(Math.random()*6)+'s';
+    s.style.animationDuration=(5+Math.random()*5)+'s';
+    s.style.transform='scale('+(0.5+Math.random())+')';
+    d.appendChild(s);
+  }
+})();
+
+/* countdown to 27 Oct 2026 20:00 Egypt */
+var target=new Date("2026-10-27T20:00:00+03:00").getTime();
+function pad(n){return String(n).padStart(2,"0");}
+function tick(){
+  var diff=Math.max(0,target-Date.now());
+  document.getElementById("dd").textContent=Math.floor(diff/86400000);
+  document.getElementById("hh").textContent=pad(Math.floor(diff%86400000/3600000));
+  document.getElementById("mm").textContent=pad(Math.floor(diff%3600000/60000));
+  document.getElementById("ss").textContent=pad(Math.floor(diff%60000/1000));
+}
+tick();setInterval(tick,1000);
+
+/* calendar — October 2026, highlight 27 */
+(function(){
+  var y=2026,m=9,sel=27; /* October */
+  var first=(new Date(y,m,1).getDay()+6)%7; /* Mon=0 */
+  var daysIn=new Date(y,m+1,0).getDate();
+  var box=document.getElementById('calDays'),html='';
+  for(var i=0;i<first;i++)html+='<div class="empty"></div>';
+  for(var d=1;d<=daysIn;d++){
+    if(d===sel)html+='<div class="sel"><span>'+d+'</span></div>';
+    else html+='<div>'+d+'</div>';
+  }
+  box.innerHTML=html;
+})();
+
+/* reveal on scroll */
+var io;
+function observe(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  io&&io.disconnect();
+  io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{root:document.getElementById('scroller'),threshold:.12});
+  els.forEach(function(e){io.observe(e);});
+}
+observe();
+
+/* hide scroll hint after scrolling */
+document.getElementById('scroller').addEventListener('scroll',function(){
+  if(this.scrollTop>60)document.getElementById('hint').classList.add('gone');
+});
+setTimeout(function(){document.getElementById('hint').classList.add('gone');},9000);
+</script>
+</body>
+</html>
