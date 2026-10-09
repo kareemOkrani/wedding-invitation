@@ -51,75 +51,60 @@ body{
 }
 .screen.active{opacity:1;visibility:visible;z-index:10}
 
-/* ============ COVER ============ */
-#cover{background:transparent}
-#cover::after{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(120% 90% at 50% 38%,rgba(255,252,244,0) 55%,rgba(122,110,75,.14) 100%);
-  pointer-events:none;
-}
-.cover-inner{
-  position:relative;z-index:3;height:100%;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;
-  padding:16% 13% 14%;
-}
-.eyebrow{
-  font-size:12px;letter-spacing:4px;color:var(--sage);
-  font-weight:600;margin:0 0 10px;
-}
-.eyebrow.small{font-size:11px;letter-spacing:3.5px;margin:0}
-.cover-names{
-  font-family:"Great Vibes",cursive;
-  font-size:clamp(52px,17vw,84px);
-  line-height:1.05;color:var(--sage);
-  margin:6px 0 2px;
-  text-shadow:0 1px 0 rgba(255,255,255,.7),0 10px 30px rgba(95,110,84,.18);
-  animation:fadeUp 1.1s ease both .15s;
-}
-.cover-names .amp{
-  font-size:.72em;padding:0 .08em;
-  color:var(--sage-dark);
-}
-.orn{display:flex;align-items:center;gap:10px;justify-content:center;margin:12px auto;animation:fadeUp 1.1s ease both .3s}
-.orn::before,.orn::after{content:"";height:1px;width:72px;background:linear-gradient(90deg,transparent,var(--gold));display:block}
-.orn::after{background:linear-gradient(90deg,var(--gold),transparent)}
-.orn i{color:var(--gold);font-style:normal;font-size:13px}
-.cover-date{
-  font-size:clamp(18px,5vw,23px);letter-spacing:2px;
-  color:var(--sage-dark);font-weight:600;
-  animation:fadeUp 1.1s ease both .42s;
-}
-.cover-date small{display:block;font-size:12px;letter-spacing:4px;font-weight:500;margin-top:6px;color:var(--sage)}
-.cover-invite{
-  margin-top:16px;font-size:13px;letter-spacing:3.5px;
-  color:var(--sage);font-weight:500;
-  animation:fadeUp 1.1s ease both .55s;
-}
-.open-btn{
-  margin-top:30px;position:relative;overflow:hidden;
-  appearance:none;cursor:pointer;border:1px solid var(--gold);
-  background:linear-gradient(180deg,#6d7c5f,#525f47);
-  color:#fdf9ef;
-  font-family:"Cormorant Garamond",serif;
-  font-size:17px;letter-spacing:5px;text-transform:uppercase;font-weight:600;
-  padding:15px 62px 15px 67px;border-radius:999px;
-  box-shadow:0 14px 30px rgba(68,80,60,.35),inset 0 1px 0 rgba(255,255,255,.35);
-  transition:transform .2s ease,box-shadow .2s ease;
-  animation:fadeUp 1.1s ease both .68s,glow 2.6s ease-in-out infinite 1.8s;
-}
-.open-btn:active{transform:scale(.96)}
-.open-btn::after{
-  content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
-  background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent);
-  transform:skewX(-20deg);animation:sheen 3.2s ease-in-out infinite;
-}
-@keyframes sheen{0%,55%{left:-70%}100%{left:130%}}
-@keyframes glow{0%,100%{box-shadow:0 14px 30px rgba(68,80,60,.35),0 0 0 0 rgba(169,143,92,.45)}50%{box-shadow:0 14px 30px rgba(68,80,60,.35),0 0 0 9px rgba(169,143,92,0)}}
+/* ============ ENVELOPE ============ */
+#envelope{background:transparent;cursor:pointer}
+.env-stage{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10% 10%}
+.env-kicker{font-size:11px;letter-spacing:4px;color:var(--sage);font-weight:600;animation:fadeUp 1s ease both .1s}
+.envelope{position:relative;width:min(74%,300px);aspect-ratio:3/4.15;margin:24px auto 0;perspective:900px;filter:drop-shadow(0 24px 34px rgba(46,54,41,.4));animation:fadeUp 1s ease both .25s}
+.env-back{position:absolute;inset:0;border-radius:10px;background:linear-gradient(165deg,#71815f,#4c5942 75%);overflow:hidden}
+.env-back::before{content:"";position:absolute;inset:7px;border:1px solid rgba(253,249,239,.28);border-radius:7px;pointer-events:none}
+.env-floral{position:absolute;width:62%;pointer-events:none}
+.env-floral.tl{left:-2px;top:-2px}
+.env-floral.br{right:-2px;bottom:-2px;transform:rotate(180deg)}
+.env-letter{position:absolute;left:7%;right:7%;top:6%;bottom:8%;z-index:2;background:linear-gradient(180deg,#fffdf6,#f4eedc);border:1px solid rgba(169,143,92,.6);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateY(4%);transition:transform 1.1s cubic-bezier(.2,.8,.25,1) .35s;box-shadow:0 6px 18px rgba(46,54,41,.25)}
+.env-letter .names{font-size:38px;margin:0}
+.env-letter p{font-size:10px;letter-spacing:3px;color:var(--sage);font-weight:600}
+.env-left,.env-right,.env-bottom{position:absolute;inset:0;z-index:3;border-radius:10px;pointer-events:none}
+.env-left{background:linear-gradient(105deg,rgba(0,0,0,.20),transparent 60%);clip-path:polygon(0 0,52% 50%,0 100%)}
+.env-right{background:linear-gradient(255deg,rgba(255,255,255,.10),transparent 60%);clip-path:polygon(100% 0,48% 50%,100% 100%)}
+.env-bottom{background:linear-gradient(0deg,rgba(0,0,0,.16),transparent 70%);clip-path:polygon(0 100%,50% 44%,100% 100%)}
+.env-flap{position:absolute;left:0;right:0;top:0;height:54%;z-index:4;background:linear-gradient(180deg,#67765b,#42503a);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;transition:transform 1s cubic-bezier(.4,0,.3,1) .1s;filter:drop-shadow(0 3px 3px rgba(0,0,0,.25))}
+.env-seal{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);z-index:5;width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e6d29e,var(--gold) 55%,#8a7040);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(46,54,41,.45),inset 0 0 0 3px rgba(253,249,239,.55),inset 0 0 0 5px rgba(138,112,64,.6);transition:transform .5s ease,opacity .5s ease;font-size:14px;font-weight:600;color:#4a4433;letter-spacing:1px;white-space:nowrap}
+#envelope.open .env-flap{transform:rotateX(180deg)}
+#envelope.open .env-seal{transform:translate(-50%,-50%) scale(0);opacity:0}
+#envelope.open .env-letter{transform:translateY(-24%)}
+.env-hint{margin:26px 0 0;font-size:12px;letter-spacing:4px;color:var(--sage-dark);font-weight:600;animation:fadeUp 1s ease both .5s,hintPulse 2.2s ease-in-out infinite 1.4s}
+@keyframes hintPulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ============ COUPLE ============ */
+#couple{background:transparent;cursor:pointer}
+.couple-stage{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9% 9%}
+.couple-frame{width:min(80%,320px);border:1px solid var(--gold);border-radius:170px 170px 18px 18px;padding:8px;background:rgba(255,253,247,.55);box-shadow:0 20px 44px rgba(46,54,41,.35);opacity:0;transform:scale(.94)}
+#couple.active .couple-frame{animation:zoomCard 1.1s cubic-bezier(.2,.8,.25,1) forwards .1s}
+@keyframes zoomCard{to{opacity:1;transform:scale(1)}}
+.couple-photo{position:relative;overflow:hidden;border-radius:162px 162px 12px 12px;border:1px solid rgba(169,143,92,.5);height:min(56svh,420px);min-height:330px;background:linear-gradient(180deg,#75855f,var(--sage-deep))}
+.couple-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.couple-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;color:#f3ecd9}
+.couple-placeholder .mono{font-family:"Great Vibes",cursive;font-size:64px;line-height:1}
+.couple-placeholder small{font-size:10px;letter-spacing:3px}
+.couple-text{position:absolute;left:0;right:0;bottom:0;padding:64px 16px 20px;background:linear-gradient(180deg,transparent,rgba(46,54,41,.55) 45%,rgba(46,54,41,.88))}
+.couple-text .kicker{color:#e9dfc4}
+.couple-text .title{color:#fdf9ef}
+.couple-text .c-heart{color:var(--gold-light);font-size:13px;margin:8px 0 2px}
+.couple-text .c-names{font-family:"Great Vibes",cursive;font-size:50px;color:#fdf9ef;line-height:1.15;text-shadow:0 4px 18px rgba(0,0,0,.45)}
+.couple-text .c-sub{font-size:11px;letter-spacing:3px;color:#e9dfc4;margin-top:8px}
+#couple .couple-text>*{opacity:0}
+#couple.active .couple-text>*{animation:fadeUp .9s ease forwards}
+#couple.active .couple-text>*:nth-child(1){animation-delay:.55s}
+#couple.active .couple-text>*:nth-child(2){animation-delay:.68s}
+#couple.active .couple-text>*:nth-child(3){animation-delay:.8s}
+#couple.active .couple-text>*:nth-child(4){animation-delay:.92s}
+#couple.active .couple-text>*:nth-child(5){animation-delay:1.04s}
+.couple-hint{margin:20px 0 0;font-size:11px;letter-spacing:4px;color:var(--sage-dark);font-weight:600;opacity:0}
+#couple.active .couple-hint{animation:fadeUp .9s ease forwards 1.3s,hintPulse 2.2s ease-in-out infinite 2.2s}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-/* floating gold dust on cover */
+/* floating gold dust on envelope */
 .dust{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
 .dust span{position:absolute;width:5px;height:5px;border-radius:50%;background:radial-gradient(circle,#e9d9a8,rgba(233,217,168,0));opacity:.8;animation:float 7s linear infinite}
 @keyframes float{0%{transform:translateY(20px);opacity:0}15%{opacity:.9}100%{transform:translateY(-110px);opacity:0}}
@@ -278,7 +263,6 @@ h2,h3,p{margin:0}
 @media(max-width:360px){
   .inner{padding-left:7%;padding-right:7%}
   .timer b{font-size:21px}
-  .cover-names{font-size:56px}
 }
 @media(min-width:520px){
   .inner{padding-top:30%}
@@ -289,19 +273,82 @@ h2,h3,p{margin:0}
 <div class="page">
   <div class="main-bg"></div>
 
-  <!-- ================= COVER ================= -->
-  <section class="screen active" id="cover">
+  <!-- ================= ENVELOPE ================= -->
+  <section class="screen active" id="envelope" onclick="openEnvelope()">
     <div class="dust" id="dust"></div>
-    <div class="cover-inner">
-      <p class="eyebrow">THE WEDDING OF</p>
-      <h1 class="cover-names">Moaz <span class="amp">&</span> Nada</h1>
-      <div class="orn"><i>❦</i></div>
-      <div class="cover-date">
-        Tuesday &nbsp;•&nbsp; 27 . 10 . 2026
-        <small>AT 8:00 PM</small>
+    <div class="env-stage">
+      <p class="env-kicker">YOU ARE CORDIALLY INVITED</p>
+      <div class="envelope">
+        <div class="env-back">
+          <svg class="env-floral tl" viewBox="0 0 120 120" fill="none">
+            <g stroke="#f3ecd9" stroke-width="2.5" opacity=".5">
+              <path d="M8 112 C 24 74, 44 52, 108 14"/>
+              <path d="M8 112 C 44 100, 76 88, 106 48"/>
+            </g>
+            <g fill="#f3ecd9" opacity=".4">
+              <ellipse cx="34" cy="80" rx="9" ry="4.5" transform="rotate(-35 34 80)"/>
+              <ellipse cx="58" cy="62" rx="9" ry="4.5" transform="rotate(-35 58 62)"/>
+              <ellipse cx="80" cy="42" rx="9" ry="4.5" transform="rotate(-35 80 42)"/>
+              <ellipse cx="48" cy="94" rx="4.5" ry="9" transform="rotate(20 48 94)"/>
+              <ellipse cx="72" cy="78" rx="4.5" ry="9" transform="rotate(20 72 78)"/>
+            </g>
+            <g opacity=".5">
+              <circle cx="92" cy="26" r="10" fill="none" stroke="#f3ecd9" stroke-width="2.5"/>
+              <circle cx="92" cy="26" r="3.5" fill="#f3ecd9"/>
+            </g>
+          </svg>
+          <svg class="env-floral br" viewBox="0 0 120 120" fill="none">
+            <g stroke="#f3ecd9" stroke-width="2.5" opacity=".5">
+              <path d="M8 112 C 24 74, 44 52, 108 14"/>
+              <path d="M8 112 C 44 100, 76 88, 106 48"/>
+            </g>
+            <g fill="#f3ecd9" opacity=".4">
+              <ellipse cx="34" cy="80" rx="9" ry="4.5" transform="rotate(-35 34 80)"/>
+              <ellipse cx="58" cy="62" rx="9" ry="4.5" transform="rotate(-35 58 62)"/>
+              <ellipse cx="80" cy="42" rx="9" ry="4.5" transform="rotate(-35 80 42)"/>
+              <ellipse cx="48" cy="94" rx="4.5" ry="9" transform="rotate(20 48 94)"/>
+              <ellipse cx="72" cy="78" rx="4.5" ry="9" transform="rotate(20 72 78)"/>
+            </g>
+            <g opacity=".5">
+              <circle cx="92" cy="26" r="10" fill="none" stroke="#f3ecd9" stroke-width="2.5"/>
+              <circle cx="92" cy="26" r="3.5" fill="#f3ecd9"/>
+            </g>
+          </svg>
+        </div>
+        <div class="env-letter">
+          <div class="names">Moaz & Nada</div>
+          <p>27 • 10 • 2026</p>
+        </div>
+        <div class="env-left"></div>
+        <div class="env-right"></div>
+        <div class="env-bottom"></div>
+        <div class="env-flap"></div>
+        <div class="env-seal">M ♥ N</div>
       </div>
-      <p class="cover-invite">CORDIALLY INVITES YOU</p>
-      <button class="open-btn" onclick="openInvitation()">Open</button>
+      <p class="env-hint">TAP TO OPEN</p>
+    </div>
+  </section>
+
+  <!-- ================= COUPLE ================= -->
+  <section class="screen" id="couple" onclick="openCouple()">
+    <div class="couple-stage">
+      <div class="couple-frame">
+        <div class="couple-photo">
+          <div class="couple-placeholder">
+            <div class="mono">M & N</div>
+            <small>COUPLE PHOTO</small>
+          </div>
+          <img src="assets/couple.jpg" alt="Moaz and Nada" onerror="this.remove()">
+          <div class="couple-text">
+            <p class="kicker">WE JOYFULLY ANNOUNCE</p>
+            <h2 class="title">THE WEDDING OF</h2>
+            <div class="c-heart">♥</div>
+            <div class="c-names">Moaz & Nada</div>
+            <p class="c-sub">TWO HEARTS &nbsp;•&nbsp; ONE JOURNEY</p>
+          </div>
+        </div>
+      </div>
+      <p class="couple-hint">TAP TO CONTINUE</p>
     </div>
   </section>
 
@@ -311,18 +358,7 @@ h2,h3,p{margin:0}
     <div class="bg-bottom"><img src="assets/down.png" alt=""></div>
 
     <div class="inner" id="scroller">
-      <div class="reveal">
-        <p class="kicker">WE JOYFULLY ANNOUNCE</p>
-        <h2 class="title">THE WEDDING OF</h2>
-        <div class="divider"><i>♥</i></div>
-        <div class="names">Moaz</div>
-        <div class="amp-big">&</div>
-        <div class="names">Nada</div>
-        <p class="sub">TWO HEARTS &nbsp;•&nbsp; ONE JOURNEY</p>
-        <div class="divider"><i>♥</i></div>
-      </div>
-
-      <div class="section reveal">
+      <div class="section reveal" style="padding-top:10px">
         <p class="kicker">RECEPTION INFO</p>
         <p class="sub">THE RECEPTION WILL TAKE PLACE AT :</p>
         <div class="time-big">8:00 PM</div>
@@ -376,9 +412,18 @@ h2,h3,p{margin:0}
 </div>
 
 <script>
-function openInvitation(){
-  document.getElementById('cover').classList.remove('active');
-  document.getElementById('invitation').classList.add('active');
+function go(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
+  document.getElementById(id).classList.add('active');
+}
+var envOpened=false;
+function openEnvelope(){
+  if(envOpened)return; envOpened=true;
+  document.getElementById('envelope').classList.add('open');
+  setTimeout(function(){go('couple');},1700);
+}
+function openCouple(){
+  go('invitation');
   var s=document.getElementById('scroller'); s.scrollTop=0;
   requestAnimationFrame(observe);
 }
