@@ -44,7 +44,7 @@ body{
 }
 .main-bg{
   position:absolute;inset:0;z-index:0;
-  background:url('assets/redmain1.png') center/100% 100% no-repeat;
+  background:#f7f0e2 url('assets/redmain1.png') center/100% 100% no-repeat;
 }
 .screen{
   position:absolute;inset:0;width:100%;height:100%;
@@ -66,12 +66,12 @@ body{
 /* red envelope — 4 separate triangle flaps over an underneath card */
 .env-cover{position:absolute;inset:0;z-index:8;perspective:1200px}
 /* the invitation card: lowest layer, always present, revealed the instant flaps part */
-.env-card{position:absolute;inset:0;z-index:1;overflow:hidden;background:url('assets/redmain1.png') center/100% 100% no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6% 6%;transform:none;animation:none;transition:none}
+.env-card{position:absolute;inset:0;z-index:1;overflow:hidden;background:#f7f0e2 url('assets/redmain1.png') center/100% 100% no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6% 6%;transform:none;animation:none;transition:none}
 /* static twin of the settled couple scene — identical look, no entrance animation */
 #envelope .env-card .couple-frame{opacity:1;transform:none;animation:none}
 #envelope .env-card .couple-text>*{opacity:1;animation:none}
 #envelope .env-card .couple-hint{opacity:1;animation:none}
-.flap{position:absolute;inset:0;background:url('assets/letter.png') center/cover no-repeat;transform-style:preserve-3d;transition:transform 1.5s cubic-bezier(0.4,0,0.2,1);will-change:transform}
+.flap{position:absolute;inset:0;background:#5e1a24 url('assets/letter.png') center/cover no-repeat;transform-style:preserve-3d;transition:transform 1.5s cubic-bezier(0.4,0,0.2,1);will-change:transform}
 /* four triangles tiled past the center so mating edges overlap (same photo: invisible, no hairline gaps) */
 .flap-top{clip-path:polygon(0 0,100% 0,50% 51%);transform-origin:top;z-index:2;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
 .flap-left{clip-path:polygon(0 0,51% 50%,0 100%);transform-origin:left;z-index:2}
@@ -85,6 +85,15 @@ body{
 /* hand off — envelope chrome fades in place (no scale, twin card already matches couple) */
 #envelope.zoom .envelope{opacity:0;transition:opacity .45s ease}
 #envelope.zoom .env-stage{opacity:0;transition:opacity .45s ease}
+
+/* invitation loader — covers the page until photos are ready, then fades */
+.loader{position:absolute;inset:0;z-index:100;background:#faf3e6;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s}
+.loader.done{opacity:0;visibility:hidden}
+.ld-mono{font-family:"Great Vibes",cursive;font-size:56px;color:#5e1a24;line-height:1}
+.ld-bar{width:150px;height:2px;background:rgba(142,47,60,.2);border-radius:2px;overflow:hidden}
+.ld-bar span{display:block;height:100%;width:40%;background:#8e2f3c;border-radius:2px;animation:ldslide 1.1s ease-in-out infinite}
+@keyframes ldslide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+.ld-txt{font-size:10px;letter-spacing:4px;color:#8e2f3c;font-weight:600}
 
 /* ============ COUPLE ============ */
 #couple{background:transparent;cursor:pointer}
@@ -326,6 +335,7 @@ h2,h3,p{margin:0}
 <body>
 <div class="page">
   <div class="main-bg"></div>
+  <div class="loader" id="loader"><div class="ld-mono">M &amp; N</div><div class="ld-bar"><span></span></div><div class="ld-txt">OPENING YOUR INVITATION</div></div>
 
   <!-- ================= ENVELOPE ================= -->
   <section class="screen active" id="envelope" onclick="openEnvelope()">
@@ -478,6 +488,15 @@ function openCouple(){
   var s=document.getElementById('scroller'); s.scrollTop=0;
   requestAnimationFrame(observe);
 }
+
+/* wait for photos before revealing anything */
+(function(){
+  var files=['assets/letter.png','assets/redmain1.png','assets/couples.png'];
+  var left=files.length, done=false;
+  function hide(){ if(done)return; done=true; document.getElementById('loader').classList.add('done'); }
+  files.forEach(function(f){ var im=new Image(); im.onload=im.onerror=function(){ if(--left<=0)hide(); }; im.src=f; });
+  setTimeout(hide,7000);
+})();
 
 /* gold dust */
 (function(){
